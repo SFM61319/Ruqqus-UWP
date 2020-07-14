@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="Ruqqus.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Ruqqus"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    ActualThemeChanged="MainPage_ActualThemeChanged">
+
+    <!-- Set the page's background by using a custom acrylic brush -->
+    <Page.Background>
+        <AcrylicBrush x:Name="mainPageBackgroundAcrylicBrush"
+                      BackgroundSource="HostBackdrop"
+                      TintColor="#ffffffff"
+                      TintOpacity="0.6"
+                      FallbackColor="#80805ad5" />
+    </Page.Background>
+
+    <Grid>
+        <NavigationView x:Name="MainPageNavigationView"
+                        PaneDisplayMode="Top"
+                        IsBackEnabled="{Binding ElementName=mainPageContentFrame, Path=CanGoBack}"
+                        Loaded="MainPageNavigationView_Loaded"
+                        ItemInvoked="MainPageNavigationView_ItemInvoked"
+                        BackRequested="MainPageNavigationView_BackRequested">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="Home"
+                                    Tag="Home">
+                    <BitmapIcon x:Name="mainPageRuqqusAppIcon"
+                                UriSource="Assets\Square44x44Logo.scale-200.png"
+                                ToolTipService.ToolTip="Home" />
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox x:Name="mainPageAppSearchAutoSuggestBox"
+                                PlaceholderText="Search"
+                                TextChanged="mainPageAppSearchAutoSuggestBox_TextChanged"
+                                QueryIcon="Find"
+                                QuerySubmitted="mainPageAppSearchAutoSuggestBox_QuerySubmitted"
+                                SuggestionChosen="mainPageAppSearchAutoSuggestBox_SuggestionChosen"
+                                ToolTipService.ToolTip="Search"
+                                Width="300" />
+            </NavigationView.AutoSuggestBox>
+
+            <NavigationView.PaneFooter>
+                <Button x:Name="mainPageAccountButton"
+                        Background="Transparent"
+                        Padding="3"
+                        BorderThickness="1"
+                        Style="{ThemeResource ButtonRevealStyle}"
+                        Click="mainPageAccountButton_Click">
+                    <PersonPicture Height="27.5"
+                                   Width="27.5" />
+                </Button>
+            </NavigationView.PaneFooter>
+
+            <NavigationView.Content>
+                <Frame x:Name="mainPageContentFrame"
+                       Padding="10">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition />
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+            </NavigationView.Content>
+        </NavigationView>
+    </Grid>
+</Page>
