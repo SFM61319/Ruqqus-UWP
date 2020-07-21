@@ -6,8 +6,12 @@
 
     <!-- Change the default SystemAccentColor to `Porpl` (#ff805ad5) -->
     <Application.Resources>
-        <Color x:Key="SystemAccentColor">#ff805ad5</Color>
-        <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="#ff805ad5" />
+        <ResourceDictionary>
+            <Color x:Key="Porpl">#FF805AD5</Color>
+            <Color x:Key="SystemAccentColor">#FF805AD5</Color>
+            <ColorPaletteResources x:Key="Default"
+                                   Accent="{ThemeResource SystemAccentColor}" />
+        </ResourceDictionary>
     </Application.Resources>
 
 </Application>

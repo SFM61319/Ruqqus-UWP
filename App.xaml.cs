@@ -105,14 +105,33 @@ namespace Ruqqus
             deferral.Complete();
         }
 
-        ApplicationTheme GetApplicationTheme()
+        /*
+        public static ApplicationTheme GetApplicationTheme()
         {
             return App.Current.RequestedTheme;
         }
 
-        void SetApplicationTheme(ApplicationTheme applicationTheme)
+        public static void SetApplicationTheme(ApplicationTheme applicationTheme)
         {
             App.Current.RequestedTheme = applicationTheme;
         }
+
+        public static bool IsDarkModeEnabled()
+        {
+            return App.GetApplicationTheme() == ApplicationTheme.Dark;
+        }
+
+        public static void SwitchApplicationTheme()
+        {
+            if (IsDarkModeEnabled())
+            {
+                SetApplicationTheme(ApplicationTheme.Light);
+            }
+            else
+            {
+                SetApplicationTheme(ApplicationTheme.Dark);
+            }
+        }
+        */
     }
 }

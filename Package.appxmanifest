@@ -38,7 +38,7 @@
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="Ruqqus"
         BackgroundColor="#805ad5">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="+r">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Ruqqus">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo"/>
             <uap:ShowOn Tile="wide310x150Logo"/>

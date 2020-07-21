@@ -1,4 +1,5 @@
-﻿using Windows.UI;
+﻿using System;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -12,57 +13,48 @@ namespace Ruqqus
         public MainPage()
         {
             this.InitializeComponent();
-            setBackgroundAcrylicBrush();
+            SetBackgroundAcrylicBrush();
         }
 
-        // Initialize a NavigationViewItem as "Home" for future uses as the last invoked navigation view item
-        public NavigationViewItem _lastInvokedNavigationViewItem;
-
-        private void setBackgroundAcrylicBrush()
+        private void SetBackgroundAcrylicBrush()
         {
-            mainPageBackgroundAcrylicBrush.TintColor = Application.Current.RequestedTheme == ApplicationTheme.Light ? Color.FromArgb(255, 255, 255, 255) : Color.FromArgb(255, 0, 0, 0);
+            MainPageBackgroundAcrylicBrush.TintColor = Settings.ApplicationSettings.Theme == ApplicationTheme.Light ? Color.FromArgb(255, 255, 255, 255) : Color.FromArgb(255, 0, 0, 0);
         }
 
         private void MainPage_ActualThemeChanged(FrameworkElement sender, object args)
         {
-            setBackgroundAcrylicBrush();
+            SetBackgroundAcrylicBrush();
         }
 
         private void MainPageNavigationView_Loaded(object sender, RoutedEventArgs e)
         {
-            mainPageContentFrame.Navigate(typeof(Home));
+            MainPageNavigationView.SelectedItem = Home;
+            MainPageContentFrame.Navigate(typeof(Home));
         }
 
         private void MainPageNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            NavigationViewItem invokedNavigationViewItem = args.InvokedItem as NavigationViewItem;
-
-            if ((invokedNavigationViewItem == null) || (invokedNavigationViewItem == _lastInvokedNavigationViewItem))
+            if (args.InvokedItemContainer == null)
             {
                 return;
             }
             
             if (args.IsSettingsInvoked)
             {
-                mainPageContentFrame.Navigate(typeof(Settings));
+                MainPageContentFrame.Navigate(typeof(Settings));
             }
             else
             {
-                switch (invokedNavigationViewItem.Tag.ToString())
+                switch (args.InvokedItemContainer.Tag.ToString())
                 {
                     case "Home":
-                        mainPageContentFrame.Navigate(typeof(Home));
-                        break;
-                    
-                    default:
-                        mainPageContentFrame.Navigate(typeof(Home));
+                        MainPageContentFrame.Navigate(typeof(Home));
                         break;
                 }
             }
-            
-            _lastInvokedNavigationViewItem = invokedNavigationViewItem;
         }
 
+        /*
         private void MainPageNavigationView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             if (mainPageContentFrame.CanGoBack)
@@ -70,23 +62,24 @@ namespace Ruqqus
                 mainPageContentFrame.GoBack();
             }
         }
+        */
 
-        private void mainPageAppSearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private void MainPageAppSearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
 
         }
 
-        private void mainPageAppSearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        private void MainPageAppSearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
 
         }
 
-        private void mainPageAppSearchAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        private void MainPageAppSearchAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
 
         }
 
-        private void mainPageAccountButton_Click(object sender, RoutedEventArgs e)
+        private void MainPageAccountButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

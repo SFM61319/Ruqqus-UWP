@@ -10,54 +10,57 @@
 
     <!-- Set the page's background by using a custom acrylic brush -->
     <Page.Background>
-        <AcrylicBrush x:Name="mainPageBackgroundAcrylicBrush"
+        <AcrylicBrush x:Name="MainPageBackgroundAcrylicBrush"
                       BackgroundSource="HostBackdrop"
                       TintColor="#ffffffff"
                       TintOpacity="0.6"
                       FallbackColor="#80805ad5" />
     </Page.Background>
-
+    
+    <!-- Main Page's App Grid -->
     <Grid>
+        <!-- Top Navigtion View -->
         <NavigationView x:Name="MainPageNavigationView"
                         PaneDisplayMode="Top"
-                        IsBackEnabled="{Binding ElementName=mainPageContentFrame, Path=CanGoBack}"
+                        IsBackEnabled="False"
+                        IsBackButtonVisible="Collapsed"
                         Loaded="MainPageNavigationView_Loaded"
-                        ItemInvoked="MainPageNavigationView_ItemInvoked"
-                        BackRequested="MainPageNavigationView_BackRequested">
+                        ItemInvoked="MainPageNavigationView_ItemInvoked">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="Home"
                                     Tag="Home">
-                    <BitmapIcon x:Name="mainPageRuqqusAppIcon"
+                    <BitmapIcon x:Name="MainPageRuqqusAppIcon"
                                 UriSource="Assets\Square44x44Logo.scale-200.png"
                                 ToolTipService.ToolTip="Home" />
                 </NavigationViewItem>
             </NavigationView.MenuItems>
 
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="mainPageAppSearchAutoSuggestBox"
+                <AutoSuggestBox x:Name="MainPageAppSearchAutoSuggestBox"
                                 PlaceholderText="Search"
-                                TextChanged="mainPageAppSearchAutoSuggestBox_TextChanged"
+                                TextChanged="MainPageAppSearchAutoSuggestBox_TextChanged"
                                 QueryIcon="Find"
-                                QuerySubmitted="mainPageAppSearchAutoSuggestBox_QuerySubmitted"
-                                SuggestionChosen="mainPageAppSearchAutoSuggestBox_SuggestionChosen"
+                                QuerySubmitted="MainPageAppSearchAutoSuggestBox_QuerySubmitted"
+                                SuggestionChosen="MainPageAppSearchAutoSuggestBox_SuggestionChosen"
                                 ToolTipService.ToolTip="Search"
                                 Width="300" />
             </NavigationView.AutoSuggestBox>
 
             <NavigationView.PaneFooter>
-                <Button x:Name="mainPageAccountButton"
+                <Button x:Name="MainPageAccountButton"
                         Background="Transparent"
                         Padding="3"
                         BorderThickness="1"
                         Style="{ThemeResource ButtonRevealStyle}"
-                        Click="mainPageAccountButton_Click">
-                    <PersonPicture Height="27.5"
-                                   Width="27.5" />
+                        Click="MainPageAccountButton_Click"
+                        ToolTipService.ToolTip="Login">
+                    <PersonPicture Height="31.5"
+                                   Width="31.5" />
                 </Button>
             </NavigationView.PaneFooter>
 
             <NavigationView.Content>
-                <Frame x:Name="mainPageContentFrame"
+                <Frame x:Name="MainPageContentFrame"
                        Padding="10">
                     <Frame.ContentTransitions>
                         <TransitionCollection>

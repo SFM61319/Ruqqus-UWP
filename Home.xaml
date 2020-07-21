@@ -8,6 +8,41 @@
     mc:Ignorable="d">
 
     <Grid>
-        <TextBlock>This is the home page.</TextBlock>
+        <ScrollViewer>
+            <!--                    For SystemAccentColor Testing                   -->
+            <!--
+            <ListView>
+                <ListViewItem>Hi</ListViewItem>
+                <ListViewItem>
+                    <ComboBox>
+                        <ComboBoxItem IsSelected="True">Hi</ComboBoxItem>
+                        <ComboBoxItem>Hello</ComboBoxItem>
+                    </ComboBox>
+                </ListViewItem>
+                <ListViewItem>
+                    <CheckBox>Check</CheckBox>
+                </ListViewItem>
+                <ListViewItem>
+                    <ToggleSwitch>Toggle Switch</ToggleSwitch>
+                </ListViewItem>
+                <ListViewItem>
+                    <ToggleButton Style="{ThemeResource ToggleButtonRevealStyle}">Toggle Button</ToggleButton>
+                </ListViewItem>
+                <ListViewItem>
+                    <CalendarDatePicker/>
+                </ListViewItem>
+                <ListViewItem />
+            </ListView>
+            -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                
+                <ProgressBar Grid.Row="0" IsIndeterminate="True" />
+                <ProgressRing Grid.Row="1" IsActive="True" Width="1000" />
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
